@@ -1,0 +1,61 @@
+{% include 'admin/layout.html' %}
+
+<main>
+  <div class="container-fluid min-vh-100">
+    <div class="d-flex mt-3">
+      <div>
+        <h1>Dashboard</h1>
+        <h3 class="mt-3">Statistics!</h3>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="col-md-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title text-muted">Total Number of Books</h4>
+            <h1 class="card-subtitle mb-2">{{books}}</h1>
+            <a href="all-books" class="card-link link-underline-light">View More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title text-muted">Total Number of Users</h4>
+            <h1 class="card-subtitle mb-2">{{users}}</h1>
+            <a href="users" class="card-link link-underline-light">View More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title text-muted">Total Number of Enrolled Books</h4>
+            <h1 class="card-subtitle mb-2">{{enrolls}}</h1>
+            <a href="enrolls" class="card-link link-underline-light">View More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title text-muted">Total Number of Returned Books</h4>
+            <h1 class="card-subtitle mb-2">{{returned_books}}</h1>
+            <a href="#" class="card-link link-underline-light">View More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <img src="{{ url_for('static', filename='dashboard_chart.png') }}" alt="Dashboard Chart" class="my-2">
+      <img src="{{ url_for('static', filename='section.png') }}" alt="section Chart" class="mb-2">
+      <img src="{{ url_for('static', filename='rating.png') }}" alt="rating Chart" class="mb-2">
+    </div>
+
+
+  </div>
+</main>
+
+{% include 'footer.html' %}

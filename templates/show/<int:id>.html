@@ -1,0 +1,57 @@
+{% include 'base.html' %}
+
+<div class="container mt-3 d-flex flex-column min-vh-100">
+
+    <div class="container d-flex">
+        <div class="col-6">
+            <h1 class="fw-bold text-decoration-underline">Book Info</h1>
+
+            <h3 class="fw-bold mt-3">
+                Book ID : {{ book.id }}
+            </h3>
+            <h3 class="fw-bold">
+                ISBN No : {{ book.isbn }}
+            </h3>
+            <h3 class="fw-bold">
+                Name : {{ book.name }}
+            </h3>
+            <h3 class="fw-bold">
+                Author : {{ book.author_name }}
+            </h3>
+            <h3 class="fw-bold">
+                Section : {{ book.sections.name }}
+            </h3>
+            <h3 class="fw-bold">
+                Language : {{ book.language }}
+            </h3>
+            <h3 class="fw-bold">
+                Date Added : {{ book.date_added }}
+            </h3>
+            <h3 class="fw-bold">
+                Rating : 
+                {% if book.rating is not none %}
+                {% for i in range(book.rating) %}
+                ⭐
+                {% endfor %}
+                {% endif %}
+            </h3>
+        </div>
+
+        <div class="col-6">
+            <h1 class="fw-bold text-decoration-underline">Feedback</h1>
+
+            {% for feedback in feedbacks %}
+            <ul>
+                <li><h4><span style="color: green;" class="fw-bold fst-italic">{{ feedback.feedback }}</span></h4></li>
+            </ul>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="mb-4 mt-3">
+        <a href="/book-id/{{book.id}}" class="btn btn-primary ms-2">Read</a>
+    </div>
+
+</div>
+
+{% include 'footer.html' %}

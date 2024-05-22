@@ -1,0 +1,127 @@
+{% include 'admin/layout.html' %}
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+        <!-- Home -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-lg-0">
+                <li class="nav-item">
+                    <!-- Buttons -->
+                    <form method="post">
+                        <button type="submit" name="new_book" class="btn btn-primary">Add New Book</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-primary d-flex align-items-center">
+        {{ message }}
+        <button type="button" class="btn-close ms-auto" data-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+</div>
+
+<div class=" mt-2">
+    <table class="table table-striped table-hover">
+        <h1 class="fw-bold text-uppercase text-decoration-underline">All Books</h1>
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">ISBN No</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Section</th>
+                <th scope="col">Language</th>
+                <th scope="col">Date Added</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <th scope="row">{{book.id}}</th>
+                <td>{{book.isbn}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.author_name}}</td>
+                <td>{{book.sections.name}}</td>
+                <td>{{book.language}}</td>
+                <td>{{book.date_added}}</td>
+                <td>
+                    {% if book.rating is not none %}
+                    {% for i in range(book.rating) %}
+                    ⭐
+                    {% endfor %}
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/view/{{book.id}}"><button class="btn btn-primary">View</button></a>
+                    <a href="/update/{{book.id}}"><button class="btn btn-success">Update</button></a>
+
+                    <!-- Modal confirmation -->
+                    <div class="modal fade" id="exampleModal{{ book.id }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete This Book</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you Sure want to Delete Book?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <a href="/delete/{{book.id}}"><button type="button"
+                                            class="btn btn-danger">Delete</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal{{ book.id }}">Delete Book</button>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+
+<!-- Footer -->
+<footer class="bg-body-tertiary text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Copyright:
+        <a class="text-body" href="mailto:21f2001119@ds.study.iitm.ac.in">21f2001119@ds.study.iitm.ac.in</a>
+    </div>
+</footer>
+
+<!-- Java script code to make the cross button work in flash message -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

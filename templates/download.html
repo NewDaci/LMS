@@ -1,0 +1,44 @@
+{% include 'base.html' %}
+
+
+<div class="container">
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-primary d-flex align-items-center mt-3">
+        {{ message|safe }}
+        <button type="button" class="btn-close ms-auto" data-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+
+    <form action="/download/{{ id }}" method="post" class="mt-5">
+        <p>Please Select Pricing:</p>
+        <input type="radio" id="html" name="fav_language" value="HTML">
+        <label for="html">₹ 5000</label><br>
+        <br>
+        <button class="btn btn-primary" type="submit">Purchase</button>
+    </form>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="bg-body-tertiary text-center fixed-bottom text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Copyright:
+      <a class="text-body" href="mailto:21f2001119@ds.study.iitm.ac.in">21f2001119@ds.study.iitm.ac.in</a>
+    </div>
+  </footer>
+
+<!-- Java script code to make the cross button work in flash message -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

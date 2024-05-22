@@ -1,0 +1,93 @@
+body {
+  background-color: beige;
+}
+
+.user-img {
+  width: 50px;
+  border-radius: 100%;
+}
+
+
+.library-logo {
+  width: 65px;
+  border-radius: 100%;
+}
+
+.heading {
+  background-color: burlywood;
+}
+
+.book-image {
+  width: 100%;
+  /* Set the width to 100% to make it responsive within the card */
+  height: 200px;
+  /* Adjust the height as needed */
+  object-fit: cover;
+  /* Maintain aspect ratio and cover the entire space within the card */
+}
+
+/* Additional styling for card-body to maintain fixed height */
+.card-body {
+  height: 150px;
+  /* Adjust the height as needed */
+  overflow: hidden;
+  /* Hide any overflow content */
+}
+
+/* Optional: Center-align text within card-body */
+.card-title,
+.card-text {
+  text-align: center;
+}
+
+/* Optional: Adjust card width to maintain consistency */
+.card {
+  width: 100%;
+}
+
+
+
+.form-control {
+  font-size: 20px;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand,
+.dropdown-menu a {
+  font-size: 18px;
+  /* Adjust the font size as needed */
+  font-weight: bold;
+  /* Make the text bold */
+}
+
+
+#lyrics {
+  color: green;
+  font-size: 30px;
+  /* Adjust the font size as needed */
+  line-height: 2.5;
+  /* Adjust the line height for better readability */
+  font-weight: bold;
+  /* Make the text bold */
+  text-align: center;
+  /* Center the text if desired */
+  white-space: pre-line;
+}
+
+
+.custom-flash-message {
+  color: #333;
+
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 30px;
+  /* Adjust the font size as needed */
+  line-height: 2.5;
+  /* Adjust the line height for better readability */
+  font-weight: bold;
+  /* Make the text bold */
+  text-align: center;
+  /* Center the text if desired */
+  white-space: pre-line;
+}

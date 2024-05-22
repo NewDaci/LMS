@@ -1,0 +1,56 @@
+{% if admin0 == 0 %}
+    {% include 'base.html' %}
+{% else %}
+    {% include 'admin/layout.html' %}
+{% endif %}
+
+<div class="container min-vh-100">
+
+    <div class="mt-4 mb-3">
+        <h1>Books related to "{{ search_query }}"</h1>
+    </div>
+
+    <ul>
+        {% for book in book_searched %}
+        <li>
+            <h1> <a class="link-underline-light" href="/show/{{book.id}}">{{ book.name }}</a></h1>
+                <ul>
+                    <li>Written by - {{ book.author_name }}</li>
+                    <li>Language - {{ book.language }}</li>
+                    <li>Ratings -{% if book.rating is not none %} {% for i in range(book.rating) %} ⭐ {% endfor %}{%  endif %}</li>
+                </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div  style="height: 50px;"></div>
+    
+    <div class="mt-4 mb-3">
+        <h1>Section related to "{{ search_query }}"</h1>
+    </div>
+
+    <ul>
+        {% for section in section_searched %}
+        <li>
+            <h1> <a class="link-underline-light" href="/genre">{{ section.name }}</a></h1>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div  style="height: 50px;"></div>
+
+    <div class="mt-4 mb-3">
+        <h1>Author based on "{{ search_query }}"</h1>
+    </div>
+
+    <ul>
+        {% for author in author_searched %}
+        <li>
+            <h1> <a class="link-underline-light" href="/author">{{ author.author_name }}</a></h1>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,72 @@
+{% include 'admin/layout.html' %}
+
+<h1 class="fw-bold mt-3 text-decoration-underline">Add New Book</h1>
+
+
+<div class="container d-flex justify-content-center mt-5">
+
+    <form action="/new-book" method="POST" class="row g-5">
+        <div class="col-md-6">
+            <!-- ISBN -->
+            <div class="mb-3">
+                <label for="isbn" class="form-label fw-bold">ISBN No.</label>
+                <input type="number" class="form-control" name="isbn" />
+            </div>
+
+            <!-- Author -->
+            <div class="mb-3">
+                <label for="author" class="form-label fw-bold">Author</label>
+                <input type="text" class="form-control" name="author" />
+            </div>
+
+            <!-- Section -->
+            <div class="mb-3">
+                <label for="section" class="form-label fw-bold">Section</label>
+                <select class="form-select" name="section">
+                    {% for i in sec %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="col-md-6">
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Name</label>
+                <input type="text" class="form-control" name="name" />
+            </div>
+
+            <!-- Language -->
+            <div class="mb-3">
+                <label for="language" class="form-label fw-bold">Language</label>
+                <select class="form-select" name="language">
+                    <option value="English">English</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Tamil">Tamil</option>
+                </select>
+            </div>
+
+            <!-- Date -->
+            <div class="mb-3">
+                <label for="date" class="form-label fw-bold">Date Added</label>
+                <input type="text" class="form-control" name="date" placeholder="yyyy-mm-dd"/>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="mb-3">
+            <label for="content" class="form-label fw-bold">Content</label>
+            <textarea class="form-control" name="content" rows="6"></textarea>
+        </div>
+        <button type="submit" class=" btn btn-primary mb-5">Add Book</button>
+    </form>
+</div>
+
+
+
+{% include 'footer.html' %}

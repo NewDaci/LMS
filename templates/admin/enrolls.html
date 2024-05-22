@@ -1,0 +1,48 @@
+{% include 'admin/layout.html' %}
+
+<div class="container mt-4 min-vh-100">
+
+    <div class="me-auto d-flex justify-content-between align-items-center mb-3">
+        
+        <h1 class="fw-bold text-uppercase text-decoration-underline">Enrollments</h1>
+        <a href="/auto_revoke" class="btn btn-primary">Auto Revoke</a>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Enrollment ID</th>
+                <th scope="col">User ID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Book ID</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Issued Date</th>
+                <th scope="col">Returning Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enroll in enrolls %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{enroll.id}}</td>
+                <td>{{enroll.user_id}}</td>
+                <td>{{enroll.user.name}}</td>
+                <td>{{enroll.book_id}}</td>
+                <td>{{enroll.book.name}}</td>
+                <td>{{enroll.issue_date}}</td>
+                <td>{{enroll.return_date}}</td>
+                <td>
+                    <a href="/revoke/{{ enroll.id }}" class="btn btn-danger">Revoke</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+
+
+{% include 'footer.html' %}

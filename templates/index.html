@@ -1,0 +1,84 @@
+{% include 'base.html' %}
+
+<!-- Main Content -->
+<main>
+  <div class="container-fluid">
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-primary mt-3 custom-flash-message d-flex align-items-center">
+      {{ message }}
+      <button type="button" class="btn-close ms-auto" data-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+
+    <!-- Latest -->
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <h1 class="fw-bold text-uppercase">Latest</h1>
+      </div>
+      {% for book in latest %}
+      <div class="col-md-2 mb-3">
+        <div class="card border-5 rounded-5 shadow">
+          <img src="../static/book{{loop.index}}.jpeg" class="card-img-top book-image" alt="book-image" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{book.name|truncate(32)}}</h5>
+            <p class="card-text">by <span class="fw-bold">{{book.author_name}}</span></p>
+            <a href="/show/{{book.id}}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Trending -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="fw-bold text-uppercase">Trending</h1>
+      </div>
+      {% for book in trend %}
+      <div class="col-md-2 mb-3">
+        <div class="card border-5 rounded-4 shadow">
+          <img src="../static/book{{ loop.length - loop.index + 1 }}.jpeg" class="card-img-top book-image"
+            alt="book-image" />
+          <div class="card-body">
+            <h5 class="card-title">{{book.name|truncate(32)}}</h5>
+            <p class="card-text">by <span class="fw-bold">{{book.author_name}}</span></p>
+            <a href="/show/{{book.id}}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- All Books -->
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="fw-bold text-uppercase">On Bookshelf</h1>
+      </div>
+      {% for book in all_books %}
+      <div class="col-md-2 mb-3">
+        <div class="card border-5 rounded-4 shadow">
+          <img src="../static/book2.jpeg" class="card-img-top book-image" alt="book-image" />
+          <div class="card-body">
+            <h5 class="card-title">{{book.name|truncate(32)}}</h5>
+            <p class="card-text">by <span class="fw-bold">{{book.author_name}}</span></p>
+            <a href="/show/{{book.id}}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</main>
+
+<!-- Java script code to make the cross button work in flash message -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../static/global.css" />
+  <link rel="icon" type="image/png" href="../../static/library.png">
+  <title>Admin | Library Management System</title>
+</head>
+
+<body>
+  <!-- Top Header -->
+  <nav class="navbar navbar-expand-lg heading">
+    <div class="container-fluid">
+
+      <!-- left logo -->
+      <a href="/dashboard">
+        <img src="../static/library.png" alt="library" class="library-logo me-2" />
+      </a>
+
+      <!-- left text -->
+      <a class="navbar-brand" href="/dashboard">
+        <h1 style="font-style: italic; color: brown">KALKAJI LIBRARY | <span style="color: rebeccapurple;">ADMIN'S
+            PANEL</span></h1>
+      </a>
+
+      <!-- code for responsive navbar -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- search button -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex ms-auto" role="search" action="/search" method="POST">
+          <input class="form-control me-2" name="search" type="search" placeholder="Search for books..." />
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg bg-success">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <!-- Home -->
+        <ul class="navbar-nav mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/dashboard">DASHBOARD</a>
+          </li>
+
+          <div class="vr me-2"></div>
+
+          <!-- Books  -->
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              MANAGE BOOKS
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/all-books">All Books</a></li>
+              <li><a class="dropdown-item" href="/category">Category</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="vr me-2"></div>
+
+        <!-- User -->
+        <ul class="navbar-nav mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              MANAGE USERS
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/users">All Users</a></li>
+              <li><a class="dropdown-item" href="/enrolls">Issued Books</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="vr me-2"></div>
+
+        <!-- Request -->
+        <ul class="navbar-nav mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link active" href="/requests" role="button">REQUESTS<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">{{req}}</span></a>
+          </li>
+        </ul>
+
+        <!-- vertical ruler -->
+        <div class="vr ms-4 me-auto"></div>
+
+        <!-- Logout -->
+        <div class="vr ms-auto"></div>
+        <ul class="navbar-nav ms-2 mb-lg-0">
+          <li class="nav-item">
+            <img src="../../static/admin.png" alt="Photo" class="user-img me-1 my-1" />
+            {% block content %}
+            <a class="navbar-brand text-muted" href="/logout/{{ admin1 }}">Logout </a>
+            {% endblock %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,31 @@
+{% include 'base.html' %}
+
+
+<div class="container d-flex vh-100 justify-content-center mt-5">
+
+  <form action="/profile/update" method="POST">
+    <!-- Change -->
+    <div class="mb-3">
+      <label for="username" class="form-label fw-bold">Change name</label>
+      <input type="text" class="form-control" name="user-name" />
+    </div>
+
+    <!-- email -->
+    <div class="mb-3">
+      <label for="email" class="form-label fw-bold">Update email</label>
+      <input type="email" class="form-control" name="user-email" />
+    </div>
+
+    <!-- password -->
+    <div class="mb-3">
+      <label for="password" class="form-label fw-bold">Change Password</label>
+      <input type="password" class="form-control" name="user-pass" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+
+</div>
+
+
+{% include 'footer.html' %}

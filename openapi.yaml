@@ -1,0 +1,606 @@
+openapi: 3.0.0
+info:
+  title: RESTful API FOR BOOKS AND SECTION
+  description: >
+    Welcome to the RESTful API for managing books and sections! This API is built using Flask-RESTful and Flask-SQLAlchemy, providing a robust and efficient solution for handling your book-related operations.
+
+    <h3>General instructions:</h3>
+    <p> 
+      To use this API, follow these steps:
+    </p>
+    <ol>
+      <li>Ensure you have access credentials if required.</li>
+      <li>Refer to the API documentation for endpoint details and available operations.</li>
+      <li>Send requests to the appropriate endpoints using HTTP methods such as GET, POST, PUT, or DELETE.</li>
+      <li>Handle responses based on the status codes provided.</li>
+    </ol>
+    <p>
+      Thank you for your attention hope u get valuable data from this API.
+      <br>
+        © 2024 Copyright:21f2001119@ds.study.iitm.ac.in
+    </p>
+
+    <h3> Book Table Schema </h3> 
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Column Type</th>
+          <th>Constraints</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td>Integer</td>
+          <td>Primary Key, Auto Increment</td>
+        </tr>
+        <tr>
+          <td>isbn</td>
+          <td>Integer</td>
+          <td>Unique, Not Null</td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td>Not Null</td>
+        </tr>
+        <tr>
+          <td>content</td>
+          <td>String</td>
+          <td></td>
+        </tr>      
+        <tr>
+          <td>author_name</td>
+          <td>String</td>
+          <td></td>
+        </tr>         
+        <tr>
+          <td>section</td>
+          <td>Integer</td>
+          <td>Foreign Key to Sections Table</td>
+        </tr>
+        <tr>
+          <td>language</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>date_added</td>
+          <td>Date</td>
+          <td>Not Null</td>
+        </tr>
+        <tr>
+          <td>rating</td>
+          <td>Integer</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3> Section Table Schema </h3> 
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Column Type</th>
+          <th>Constraints</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>id</td>
+          <td>Integer</td>
+          <td>Primary Key, Auto Increment</td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>String</td>
+          <td>Not Null, Unique</td>
+        </tr>
+        <tr>
+          <td>date_created</td>
+          <td>Date</td>
+          <td>Not Null</td>
+        </tr>      
+        <tr>
+          <td>description</td>
+          <td>String</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <h3> Error Codes </h3> 
+    <table>
+      <thead>
+        <tr>
+          <th>Resource</th>
+          <th>Error Code</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Book</td>
+          <td>BOOK001</td>
+          <td>ISBN No. required</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>BOOK002</td>
+          <td>Name is required</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>BOOK003</td>
+          <td>Section is required</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>BOOK004</td>
+          <td>Date is required</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>BOOK005</td>
+          <td>Invalid Date Format</td>
+        </tr>
+        <tr>
+          <td>Section</td>
+          <td>BOOK006</td>
+          <td>Section Not Found</td>
+        </tr>
+        <tr>
+          <td>Book</td>
+          <td>BOOK009</td>
+          <td>Book Already Exists</td>
+        </tr>
+        <tr>
+          <td>Section</td>
+          <td>SEC001</td>
+          <td>Name is Required</td>
+        </tr>
+        <tr>
+          <td>Section</td>
+          <td>SEC002</td>
+          <td>Date is Required</td>
+        </tr>
+        <tr>
+          <td>Section</td>
+          <td>SEC005</td>
+          <td>Invalid Date Format</td>
+        </tr>
+        <tr>
+          <td>Section</td>
+          <td>SEC006</td>
+          <td>Name Already Taken</td>
+        </tr>
+         <tr>
+          <td>Section</td>
+          <td>SEC009</td>
+          <td>Section Already Exists</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000/
+paths:
+  /api/book/{book_name}:
+    description: End point to read, update and delete a book resource.
+    get:
+      description: Operation to Read book resource.
+      parameters:
+        - in: path
+          name: book_name
+          required: true
+          schema:
+            type: string
+            example: Atomic Habit
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: book object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  isbn:
+                    type: integer
+                    example: 89437582346
+                  name:
+                    type: string
+                    example: Art of War
+                  author_name:
+                    type: string
+                    example: Not Me
+                  section:
+                    type: string
+                    example: Horror
+                  language:
+                    type: string
+                    example: English
+                  content:
+                    type: string
+                    example: The Story begins as...
+                  date_added:
+                    type: string
+                    example: 2024-04-13
+                  
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Book not found
+
+
+    delete:
+      description: Operation to delete the course resource
+      parameters:
+        - in: path
+          name: book_name
+          required: true
+          schema:
+            type: string
+            example: Atmoic Habit
+      responses:
+        '200':
+          description: Successfully Deleted
+        '404':
+          description: Book not found
+        '500':
+          description: Intenal Server Error
+
+  /api/book:
+    description: End point to create book resource
+    post:
+      description: Operation to create the book resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: integer
+                  example: 8234698275
+                name:
+                  type: string
+                  example: iKigai
+                author_name:
+                  type: string
+                  example: Japnes
+                section:
+                  type: string
+                  example: Romantic
+                language:
+                  type: string
+                  example: German
+                content:
+                  type: string
+                  example: Once upon a time there was a forest....
+                date_added:
+                  type: string
+                  example: 2024-04-13
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  isbn:
+                    type: integer
+                    example: 89437582346
+                  name:
+                    type: string
+                    example: Art of War
+                  author_name:
+                    type: string
+                    example: Not Me
+                  section:
+                    type: string
+                    example: Horror
+                  language:
+                    type: string
+                    example: English
+                  content:
+                    type: string
+                    example: The Story begins as...
+                  date_added:
+                    type: string
+                    example: 2024-04-13
+        '409':
+          description: Book already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+                    
+                    
+  /api/book/{book_id}:
+    description: to update book with book ID.
+    put:
+      description: Operation to update the book resource.
+      parameters:
+        - in: path
+          name: book_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: integer
+                  example: 8234698275
+                name:
+                  type: string
+                  example: iKigai
+                author_name:
+                  type: string
+                  example: Japnes
+                section:
+                  type: string
+                  example: Romantic
+                language:
+                  type: string
+                  example: German
+                content:
+                  type: string
+                  example: Once upon a time there was a forest....
+                date_added:
+                  type: string
+                  example: 2024-04-13
+      responses:
+        '200':
+          description: Successfuly updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  isbn:
+                    type: integer
+                    example: 89437582346
+                  name:
+                    type: string
+                    example: Art of War
+                  author_name:
+                    type: string
+                    example: Not Me
+                  section:
+                    type: string
+                    example: Horror
+                  language:
+                    type: string
+                    example: English
+                  content:
+                    type: string
+                    example: The Story begins as...
+                  date_added:
+                    type: string
+                    example: 2024-04-13
+                  rating:
+                    type: integer
+                    example: 4
+        '404':
+          description: Book not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+  
+  
+  
+  /api/section/{section_name}:
+    description: End point to read, update and delete a section resource.
+    get:
+      description: Operation to Read section resource.
+      parameters:
+        - in: path
+          name: section_name
+          required: true
+          schema:
+            type: string
+            example: Romantic
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: section object
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: Action
+                  date_created:
+                    type: string
+                    example: 2024-04-13
+                  description:
+                    type: string
+                    example: For 16+
+                  
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Section not found
+    
+    delete:
+      description: Operation to delete the section resource
+      parameters:
+        - in: path
+          name: section_name
+          required: true
+          schema:
+            type: string
+            example: Horror
+      responses:
+        '200':
+          description: Successfully Deleted
+        '404':
+          description: Section not found
+        '500':
+          description: Intenal Server Error
+  
+  
+  /api/section:
+    description: End point to create section resource
+    post:
+      description: Operation to create the section resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Sci-Fi
+                date_created:
+                  type: string
+                  example: 2024-04-13
+                description:
+                  type: string
+                  example: For Science Lovers
+      responses:
+        '201':
+          description: Successfully Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  name:
+                    type: string
+                    example: Art of War
+                  description:
+                    type: string
+                    example: For Adults Only
+                  date_created:
+                    type: string
+                    example: 2024-04-13
+        '409':
+          description: Section already exist
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+  
+  
+  /api/section/{section_id}:
+    description: to update book with section ID.
+    put:
+      description: Operation to update the section resource.
+      parameters:
+        - in: path
+          name: section_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Sci-Fi
+                date_created:
+                  type: string
+                  example: 2024-04-13
+                description:
+                  type: string
+                  example: For Science Lovers
+      responses:
+        '200':
+          description: Successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  name:
+                    type: string
+                    example: Crime
+                  description:
+                    type: string
+                    example: For Adults Only
+                  date_created:
+                    type: string
+                    example: 2024-04-13
+        '404':
+          description: Section not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+  

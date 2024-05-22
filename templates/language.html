@@ -1,0 +1,35 @@
+{% include 'base.html' %}
+
+
+<main>
+  <div class="container-fluid min-vh-100">
+        {% for language in languages %}
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <h1> <span class=" fw-bold text-decoration-underline">In {{ language }}</span></h1>
+            </div>
+            {% for book in all_books %}
+            {% if book.language == language %}
+            <div class="col-md-2">
+                <div class="card border-5 rounded-4 shadow mb-3">
+                    <img src="../static/book1.jpeg" class="card-img-top book-image" alt="book-image" />
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{book.name}}</h5>
+                        <p class="card-text">Written by : <span class="fw-bold">{{book.author_name}}</span></p>
+                        <a href="/book-id/{{book.id}}" class="btn btn-primary">Read</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+
+
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,89 @@
+{% include 'base.html' %}
+
+<div class=" justify-content-center ">
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Home -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-lg-0">
+                    <li class="nav-item">
+                        <!-- Buttons -->
+                        <div class="container d-flex">
+
+                            <!-- BOOTSTRAP MODAL -->
+                            <div class="modal fade" id="exampleModal{{ book.id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Request Book</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="/issue-this-book/{{book.id}}">
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label">Days
+                                                        requesting for:</label>
+                                                    <input type="text" name="req_days" class="form-control"
+                                                        id="recipient-name">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label">Request
+                                                        Date:</label>
+                                                    <input type="text" class="form-control" name="curr_date"
+                                                        value="{{ curr_date }}" id="recipient-name" disabled>
+                                                    <input type="hidden" name="curr_date" value="{{ curr_date }}">
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Request</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary text-uppercase" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ book.id }}" data-bs-whatever="@mdo">Request This
+                                Book</button>
+
+
+                                <li class="nav-item dropdown">
+                                    <a class="text-uppercase btn btn-secondary ms-3 dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">rate this book</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/rating/{{book.id}}/5">⭐⭐⭐⭐⭐</a></li>
+                                        <li><a class="dropdown-item" href="/rating/{{book.id}}/4">⭐⭐⭐⭐</a></li>
+                                        <li><a class="dropdown-item" href="/rating/{{book.id}}/3">⭐⭐⭐</a></li>
+                                        <li><a class="dropdown-item" href="/rating/{{book.id}}/2">⭐⭐</a></li>
+                                        <li><a class="dropdown-item" href="/rating/{{book.id}}/1">⭐</a></li>
+                                    </ul>
+                                </li>
+                        </div>
+                    </li>
+                 </ul>
+            </div>
+        </div>  
+    </nav>
+
+    <h4>Book: <span style="color: brown;">{{book.name}}</span></h4>
+    <h5>Author: <span style="color: brown;">{{book.author_name}}</span></h5>
+
+    <div class="container mt-4 fw-bold fs-5">
+        <p id="lyrics">{{book.content}}</p>
+    </div>
+    <!-- <div class="container d-flex justify-content-center mb-5 ">
+        <iframe src="{{ url_for('static', filename='atomic.pdf') }}" width="1000" height="800"></iframe>
+    </div> -->
+</div>
+{% include 'footer.html' %}

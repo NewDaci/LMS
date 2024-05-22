@@ -1,0 +1,44 @@
+{% include 'base.html' %}
+
+<div class="min-vh-100 ms-5">
+    {% if messages|length > 0 %}
+    <div class="mt-4 mb-3">
+        <h1>{{ messages|length }} Message For You!</h1>
+    </div>
+    {% else %}
+    <div class="mt-4 mb-3">
+        <h1>No New Message For You. </h1>
+    </div>
+    {% endif %}
+
+    <ul>
+        {% for message,book in messages %}
+            <ul>
+                {% if message.message == "Approved" %}
+                <div class="d-flex align-items-center mb-3 mt-3">
+                <li>
+                    <h4>Your Request for the Book <span style="color: blue;" class="fw-bold fst-italic">{{ book.name}}</span>
+                        has been : <span style="color: green;"> {{message.message }}</span></h4>
+                </li>
+                <a href="/message/read/{{message.id}}" class="btn btn-primary mt-5 mb-5 ms-3">Mark as Read</a>
+            </div>
+                {% else %}
+                <div class="d-flex align-items-center mt-3 mb-3">
+                <li>
+                    <h4>Your Request for the Book <span style="color: blue;" class="fw-bold fst-italic">{{ book.name
+                            }}</span> has been <span style="color: red;">REJECTED</span> for the REASON being:
+                        <span style="color: red;">{{message.message }}</span>
+                    </h4>
+                    <h5 class="ms-5">|-----------> Read <a href="/policy" class="btn btn-warning">Policies</a> to avoid further Rejection on Books.</h5>
+                </li>
+                <a href="/message/read/{{message.id}}" class="btn btn-primary mb-5 ms-3">Mark as Read</a>
+            </div>
+                {% endif %}
+            </ul>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+{% include 'footer.html' %}
