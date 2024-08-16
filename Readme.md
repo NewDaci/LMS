@@ -12,6 +12,19 @@
 - Implement user profiles, including general user profiles and admin specific functionality.
 
 
+## Screenshots
+<div style="width: 100%;display: inline-block">
+   <img style="float: left;width: 25%" src="screenshots/screen1.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen2.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen3.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen4.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen5.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen6.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen7.png" alt="IIT Madras MAD 1 Project">
+   <img style="float: left;width: 25%" src="screenshots/screen8.png" alt="IIT Madras MAD 1 Project">
+</div>
+
+
 # Technology Stack
 
 The following technologies and tools are used in order to develop this website:
