@@ -68,52 +68,67 @@ $ tree
 .
 ├── api
 │   ├── book_api.py
-│   ├── __pycache__
-│   │   ├── api.cpython-310.pyc
 │   └── section_api.py
 ├── app.py
-├── books.sqlite3
 ├── controllers
 │   ├── admin.py
 │   ├── books.py
 │   ├── enrollments.py
 │   ├── index.py
 │   ├── issue_book.py
-│   ├── __pycache__
-│   │   ├── admin.cpython-310.pyc
 │   ├── section.py
 │   └── user.py
+├── dbschema.pdf
+├── Dockerfile
 ├── download
 │   └── Atomic Habit.pdf
 ├── instance
 │   └── books.sqlite3
-├── mad-1-iitm-project(LMS).mp4
-├── Mad-1 Project Report - Google.pdf
+├── Mad-1 Project Report.docx
+├── Mad-1 Project Report.pdf
 ├── migrations
 │   ├── alembic.ini
 │   ├── env.py
-│   ├── __pycache__
-│   │   └── env.cpython-310.pyc
 │   ├── README
 │   ├── script.py.mako
 │   └── versions
 │       ├── 1ecfbaf16ed2_.py
-│       ├── dc8d878f052f_req_days_can_t_be_null.py
-│       └── __pycache__
-│           ├── 1ecfbaf16ed2_.cpython-310.pyc
-│           ├── 21c69c5f8bbe_.cpython-310.pyc
+│       ├── 21c69c5f8bbe_.py
+│       ├── 27e9e4d82435_.py
+│       ├── 35051d041b1a_.py
+│       ├── 356fa251c895_added_book_id_to_message_class.py
+│       ├── 3dd1b673a582_.py
+│       ├── 3e0966bc2c05_.py
+│       ├── 5d259d2d2704_.py
+│       ├── 83f5d5a69e67_.py
+│       ├── 84a8d9752293_.py
+│       ├── 884450b5da67_.py
+│       ├── 92a4c0c6e11b_.py
+│       ├── 9a1429da0f4f_.py
+│       ├── bf2954592306_.py
+│       ├── dbdf5b6028f5_.py
+│       └── dc8d878f052f_req_days_can_t_be_null.py
 ├── models
-│   ├── model (copy).py
-│   ├── model.py
-│   └── __pycache__
-│       └── model.cpython-310.pyc
+│   └── model.py
 ├── openapi.yaml
-├── __pycache__
-│   ├── app.cpython-310.pyc
-│   └── main.cpython-310.pyc
 ├── Readme.md
 ├── requirements.txt
+├── screenshots
+│   ├── screen10.png
+│   ├── screen11.png
+│   ├── screen12.png
+│   ├── screen13.png
+│   ├── screen1.png
+│   ├── screen2.png
+│   ├── screen3.png
+│   ├── screen4.png
+│   ├── screen5.png
+│   ├── screen6.png
+│   ├── screen7.png
+│   ├── screen8.png
+│   └── screen9.png
 ├── static
+│   ├── admin.png
 │   ├── book1.jpeg
 │   ├── book2.jpeg
 │   ├── book3.jpeg
@@ -126,8 +141,10 @@ $ tree
 │   ├── library.png
 │   ├── logo_lib.jpeg
 │   ├── rating.png
-│   └── section.png
+│   ├── section.png
+│   └── user.png
 └── templates
+    ├── 404page.html
     ├── admin
     │   ├── add-section.html
     │   ├── admin_login.html
@@ -168,13 +185,10 @@ $ tree
     │   └── <int:id>.html
     ├── user_login.html
     └── user_signup.html
+
+17 directories, 103 files
 ```
 
-# Video
-- ```https://drive.google.com/file/d/19ataA7YZIstNH-YrcVal7i9Lvax_f7-Y/view?usp=sharing```
-
-# Project URL
-- ```https://drive.google.com/file/d/1cVP1cqjBmEfl1A7H-OQHlANRPEvI8MP3/view?usp=sharing```
-
+## Deployed using AWS EB.
 # Documentation
 Ranjeet Sharma (21f2001119)
