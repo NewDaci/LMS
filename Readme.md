@@ -191,4 +191,4 @@ $ tree
 
 ## Deployed using AWS EB.
 # Documentation
-Ranjeet Sharma (21f2001119)
+Ranjeet Sharma (21f2001119@ds.study.iitm.ac.in)
