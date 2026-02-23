@@ -2,7 +2,7 @@
 
 # Website Live at
 ```
-http://env-from-cli-bish.eba-cdjd3vis.ap-south-1.elasticbeanstalk.com/
+https://lms-nyqi.onrender.com
 ```
 
 # About Project
